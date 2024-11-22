@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+}
+
+:root{
+    --primary:#cad2c5;
+    --secondary:#d0f4de;
+    --ternary:#1d262b;
+    --background:#354f52;
+    --button:#83c5be;
+}
+
+html,body{
+    background-color: var(--ternary);
+}
