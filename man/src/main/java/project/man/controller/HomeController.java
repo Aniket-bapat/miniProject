@@ -12,10 +12,6 @@ public class HomeController {
     public String home(Model model) {
         return "index"; // Only "index", not "index.html"
     }
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "login"; // Only "index", not "index.html"
-    }
     @GetMapping("/register")
     public String register(Model model) {
         return "register"; // Only "index", not "index.html"
