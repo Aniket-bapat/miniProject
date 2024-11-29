@@ -11,12 +11,20 @@ import project.man.util.constants.Roles;
 public class SeedData implements CommandLineRunner {
     @Autowired
     private AccountService accountService;
-        public void run(String... args) throws Exception
-        {
-            Account account01 = new Account();
-            account01.setEmail("khushjain052@gmail.com");
-            account01.setPassword("Khush");
-            account01.setRole(Roles.ADMIN.getRole());
-            accountService.save(account01);
-        }
+
+   @Override
+    public void run(String... args) throws Exception {
+        Account account01 = new Account();
+        account01.setEmail("khushjain052@gmail.com");
+        account01.setPassword("Khush"); 
+        account01.setRole(Roles.ADMIN.getRole());
+        account01.setAuthorities(null);
+        accountService.save(account01);
+        Account account02 = new Account();
+        account02.setEmail("shreedeelipent@gmail.com");
+        account02.setPassword("Khush"); 
+        account02.setRole(Roles.ADMIN.getRole());
+        account02.setAuthorities(null);
+        accountService.save(account02);
+    }
 }

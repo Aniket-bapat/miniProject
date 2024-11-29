@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import project.man.Repositories.AccountRepository;
 import project.man.models.Account;
-import project.man.models.Authority;
 
 @Service
 public class AccountService implements UserDetailsService {
@@ -29,22 +28,35 @@ public class AccountService implements UserDetailsService {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         return accountRepository.save(account);
     }
-     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+  
         Optional<Account> optionalAccount = accountRepository.findOneByEmailIgnoreCase(email);
-        if(!optionalAccount.isPresent())
-        {
-            throw new UsernameNotFoundException("Account not found");
+    
+        if (optionalAccount.isEmpty()) {
+            throw new UsernameNotFoundException("Account not found with email: " + email);
         }
-            Account account = optionalAccount.get();
-           List<GrantedAuthority> grantedAuthority = new ArrayList<>();
-           grantedAuthority.add(new SimpleGrantedAuthority(account.getRole())); 
-           for(Authority _auth : account.getAuthorities())
-           {
-            grantedAuthority.add(new SimpleGrantedAuthority(_auth.getName())); 
-           }
-        return new User(account.getEmail(),account.getPassword(),grantedAuthority);
+    
+        Account account = optionalAccount.get();
+    
+      
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+    
+       
+        grantedAuthorities.add(new SimpleGrantedAuthority(account.getRole()));
+    
+        if (account.getAuthorities() != null && !account.getAuthorities().isEmpty()) {
+            account.getAuthorities().forEach(auth -> 
+                grantedAuthorities.add(new SimpleGrantedAuthority(auth.getName()))
+            );
+        }
+    
+   
+        System.out.println("Authorities for " + account.getEmail() + ": " + grantedAuthorities);
+    
+        return new User(account.getEmail(), account.getPassword(), grantedAuthorities);
     }
+    
     public Optional<Account> findOneByEmail(String email)
     {
         return accountRepository.findOneByEmailIgnoreCase(email);
