@@ -14,9 +14,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class WebsecurityConfig {
         private static final String[] WHITELIST = {
-                "/", "/login", "/register", "/css/**", "/fonts/**", "/images/**", "/js/**", "/home","/forgot-password","/reset-password","/change-password",
+                "/", "/login", "/register", "/css/**", "/fonts/**", "/images/**", "/js/**", "/home","/forgot-password","/reset-password","/change-password","/landing"
         };
-
+        @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
                 http
                         .csrf(csrf -> csrf.disable())  // Disable CSRF for easier testing (re-enable in production)
