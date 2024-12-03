@@ -24,6 +24,12 @@ public class ProjectService {
     public void delete(Project project) {
         projectRepository.delete(project);
     }
-
+  public Project save(Project project)
+    {
+        return projectRepository.save(project);
+    }
+public List<Project> getAllProjects() {
+    return projectRepository.findAll();
+}
     
 }

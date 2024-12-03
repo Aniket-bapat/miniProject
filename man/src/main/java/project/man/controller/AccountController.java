@@ -1,5 +1,7 @@
 package project.man.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,9 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.man.Service.ProjectService;
+import project.man.models.Project;
+
 @Controller
 public class AccountController {
 
+        @Autowired
+     ProjectService projectService;
+    
       @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -53,6 +61,8 @@ public class AccountController {
     @GetMapping("/index")
     @PreAuthorize("isAuthenticated()")
     public String index(Model model) {
+            List<Project> projects = projectService.getAllProjects();
+        model.addAttribute("projects", projects);
         return "index"; 
     }
 }

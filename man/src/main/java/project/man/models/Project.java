@@ -17,10 +17,19 @@ public class Project {
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     @Column(name="ID")
     private Long id;
+
+
+     
+    @Column(columnDefinition="text")
+    @NotEmpty(message="Title Missing")
+    private String title;
+ 
  
     @Column(columnDefinition="text")
     @NotEmpty(message="Description mising")
     private String description;
+
+
  
     @Column(columnDefinition="text")
     @NotEmpty(message="Requirements mising")
