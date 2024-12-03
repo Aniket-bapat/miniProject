@@ -22,7 +22,7 @@ public class WebsecurityConfig {
         private AccountService accountService;
 
         private static final String[] WHITELIST = {
-                "/", "/login", "/register", "/css/**", "/fonts/**", "/images/**", "/js/**", "/index","/forgot-password","/reset-password","/change-password","/landing"
+                "/", "/login", "/register", "/css/**", "/fonts/**", "/image/**", "/js/**", "/index","/forgot-password","/reset-password","/change-password","/landing"
         };
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
