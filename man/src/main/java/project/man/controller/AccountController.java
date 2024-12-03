@@ -56,4 +56,8 @@ public class AccountController {
     public String landing(Model model) {
         return "landing"; 
     }
+    @GetMapping("/index")
+    public String index(Model model) {
+        return "index"; 
+    }
 }
