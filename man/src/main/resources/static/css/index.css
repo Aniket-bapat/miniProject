@@ -1,15 +1,88 @@
-*{
-    margin: 0;
+body{
+  font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
-:root{
-    --primary:#cad2c5;
-    --secondary:#d0f4de;
-    --ternary:#1d262b;
-    --background:#354f52;
-    --button:#83c5be;
+.navbar{
+    height: 5rem;
+    background-color: white;
 }
 
-html,body{
-    background-color: var(--ternary);
+.navbar-nav{
+    background-color: white;
+}
+
+.fa-solid, .fa-laptop-code, .fa-flip-horizontal{
+    color: #B197FC;
+    font-size: 2rem;
+    background-color: white;
+}
+
+.nav-link{
+    color: #222222 !important;
+}
+
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-links, .f-info-socials, .f-info-brand{
+    width: 100%;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.card-text p{
+    font-weight: 400 !important;
+}
+
+.project-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+background-color: white;
 }
