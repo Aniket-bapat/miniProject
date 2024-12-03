@@ -50,13 +50,8 @@ public class AccountController {
             return "login";  
         }
     }
-    
-    @GetMapping("/landing")
-    @PreAuthorize("isAuthenticated()")
-    public String landing(Model model) {
-        return "landing"; 
-    }
     @GetMapping("/index")
+    @PreAuthorize("isAuthenticated()")
     public String index(Model model) {
         return "index"; 
     }

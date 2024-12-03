@@ -22,7 +22,7 @@ public class WebsecurityConfig {
         private AccountService accountService;
 
         private static final String[] WHITELIST = {
-                "/", "/login", "/register", "/css/**", "/fonts/**", "/image/**", "/js/**", "/index","/forgot-password","/reset-password","/change-password","/landing"
+                 "/login", "/register", "/css/**", "/fonts/**", "/image/**", "/js/**","/forgot-password","/reset-password","/change-password",
         };
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -31,14 +31,14 @@ public class WebsecurityConfig {
                         .authorizeHttpRequests(auth -> auth
                                 .requestMatchers(WHITELIST).permitAll()  
                                 .requestMatchers("/welcome/**").authenticated()  
-                                .requestMatchers("/landing/**").authenticated()
+                                .requestMatchers("/index/**").authenticated()
                         )
                         .formLogin(form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
                                 .usernameParameter("email")
                                 .passwordParameter("password")
-                                .defaultSuccessUrl("/landing", true)
+                                .defaultSuccessUrl("/index", true)
                                 .failureUrl("/login?error")
                                 .permitAll()
                         )
