@@ -1,5 +1,6 @@
 package project.man.models;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,6 +38,8 @@ public class Account {
     private String password;
 
     private String role;
+    private String token;
+    private LocalDateTime password_reset_token_expiry;
 
    @ManyToMany(fetch = FetchType.EAGER)
 @JoinTable(
