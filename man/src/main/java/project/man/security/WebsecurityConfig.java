@@ -1,5 +1,6 @@
 package project.man.security;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,7 @@ public class WebsecurityConfig {
         private AccountService accountService;
 
         private static final String[] WHITELIST = {
-               "/","/login", "/register", "/css/**", "/fonts/**", "/image/**", "/js/**","/forgot-password","/reset-password","/change-password","/project","/add_project"
+               "/","/login", "/register", "/css/**", "/fonts/**", "/image/**", "/js/**","/forgot-password","/reset-password","/change-password","/project",
         };
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -32,7 +33,11 @@ public class WebsecurityConfig {
                                 .requestMatchers(WHITELIST).permitAll()  
                                 .requestMatchers("/welcome/**").authenticated()  
                                 .requestMatchers("/index/**").authenticated()
+                                .requestMatchers("/projects/add").authenticated()
+                                .requestMatchers("/project/add").authenticated()
+                                .requestMatchers("/editproject/**").authenticated()
                                 .requestMatchers("/projects/**").permitAll()  
+                                .requestMatchers("/tinymce/**").permitAll()  
                         )
                         .formLogin(form -> form
                                 .loginPage("/login")

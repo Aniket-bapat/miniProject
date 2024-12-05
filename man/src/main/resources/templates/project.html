@@ -44,14 +44,11 @@
           <p th:text="${project.description}">Body</p>
           <hr color="grey"/>
 
-          <div  sec:authorize="isAuthenticated()">
-          <a th:href="@{'/projects/' + ${project.id} + '/edit'}" class="btn btn-secondary btn-lg" role="button" >Edit</a> |
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-            Delete
-          </button>
-          <button type="button" class="btn btn-warning">
-            Requirements
-          </button>
+          <div  sec:authorize="isAuthenticated()" th:if="${isOwner}">
+            <a th:href="@{'/projects/' + ${project.id} + '/edit'}" class="btn btn-secondary btn-lg" role="button" >Edit</a> |
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+              Delete
+            </button>
           
         </div>
       </div>
