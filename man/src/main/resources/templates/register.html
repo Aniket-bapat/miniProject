@@ -1,22 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>User Registration</title>
+    <link rel="stylesheet" th:href="@{static/css/registercss.css}" />
 </head>
-<body class="min-h-screen">
-    <div class="w-full h-screen flex justify-center items-center">
-        <div class="w-fit h-fit  flex flex-col items-center rounded-md p-4 gap-4">
-            <h1 class="w-fit text-6xl text-[--primary] font-bold">REGISTER PAGE</h1>
-            <p class="text-[--secondary] text-xl">The intelligent project management platform that simplifies teamwork</p>
-            <div class="flex gap-5">
-                <a href="/register" class="bg-black text-[--primary] border border-[black] px-4 py-2 rounded-xl hover:bg-[--ternary] hover:border-[--primary] w-24 flex justify-center items-center">Register</a>
-                <a href="/login" class="border border-[--primary] text-[--primary] px-4 py-2 rounded-xl w-24 flex justify-center items-center hover:bg-black hover:border-black">Login</a>
+<body>
+    <div class="login-box">
+        <form id="registrationForm" action="#"
+         th:action="@{/register}"
+         th:object="${account}"
+         method="post">
+            <h2>Register</h2>
+            <!-- Username Field -->
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="person"></ion-icon>
+                </span>
+                <input th:field="*{Fname} "type="text" id="username" required >
+                <label for="username">Username</label>
             </div>
-        </div>
+
+            <!-- Email Field -->
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="mail"></ion-icon>
+                </span>
+                <input  th:field="*{email}" type="email" id="email" required >
+                <label for="email">Email</label>
+            </div>
+
+            <!-- Password Field -->
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input th:field="*{password}" type="password" id="password" required >
+                <label for="password">Password</label>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" id="confirmPassword" required >
+                <label for="confirmPassword">Confirm Password</label>
+                <p class="error-message" id="passwordError">Passwords do not match!</p>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" id="terms" required aria-label="checkbox">
+                    I agree to the terms
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+
+            <!-- Link to Login -->
+            <div class="register-link">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </form>
     </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="register.js">
+        const registrationForm = document.getElementById('registrationForm');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirmPassword');
+const passwordError = document.getElementById('passwordError');
+
+registrationForm.addEventListener('submit', (event) => {
+    // Prevent form submission if passwords don't match
+    if (password.value !== confirmPassword.value) {
+        event.preventDefault();
+        passwordError.style.display = 'block';
+    } else {
+        passwordError.style.display = 'none';
+        alert('Registration successful!');
+    }
+});
+
+// Live validation for password match
+confirmPassword.addEventListener('input', () => {
+    if (password.value === confirmPassword.value) {
+        passwordError.style.display = 'none';
+    }
+});
+
+    </script>
 </body>
 </html>

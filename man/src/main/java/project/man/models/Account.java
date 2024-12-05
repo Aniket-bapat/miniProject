@@ -27,6 +27,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY for MySQL
     private Long id;
 
+    private String fname;
+
     @Email(message = "Invalid Email")
     @NotEmpty(message = "Email missing")
     private String email;

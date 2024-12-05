@@ -7,7 +7,7 @@
     <!-- Navbar -->
     <header th:replace="~{/fragments/header :: header}">
         <!-- Fallback content -->
-        <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+        <!-- <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><i class="fa-solid fa-laptop-code fa-flip-horizontal"></i></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" 
@@ -17,12 +17,12 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link active" href="#">Home</a>
-                        <a class="nav-link" href="landing.html">All Projects</a>
-                        <a class="nav-link" href="#">Add New Project</a>
+                        <a class="nav-link" th:href="/landing.html">All Projects</a>
+                        <a class="nav-link" th:href="/add_project">Add New Project</a>
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
     </header>
 
     <section class="about_section layout_padding">
@@ -31,7 +31,7 @@
             <h3>
               <a th:href="@{/projects/{id}(id=${project.id})}" th:text="${project.title}">Title</a>
             </h3>
-            <p th:text="${project.description}">Body</p>
+            <p th:text="'Project head : ' + ${project.account.Fname}">Body</p>
             <hr color="grey"/>
           </div>
         </div>
@@ -46,18 +46,6 @@
         </nav>
       </section>
     <footer th:replace="~{/fragments/footer :: footer}">
-        <!-- Fallback content -->
-        <div class="text-center py-4">
-            <div class="mb-2">
-                <i class="fa-brands fa-square-facebook"></i>
-                <i class="fa-brands fa-square-instagram"></i>
-                <i class="fa-brands fa-linkedin"></i>
-            </div>
-            <div>&copy; ProjectAce</div>
-            <div>
-                <a href="/Privacy">Privacy</a> | <a href="/Terms">Terms</a>
-            </div>
-        </div>
     </footer>
 </body>
 </html>

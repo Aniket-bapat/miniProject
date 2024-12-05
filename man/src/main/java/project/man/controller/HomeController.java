@@ -24,9 +24,5 @@ public class HomeController {
         model.addAttribute("projects", projects);
         return "index"; 
     }
-    @GetMapping("/register")
-    public String register(Model model) {
-        return "register"; 
-    
-    }
+
 }
