@@ -26,12 +26,28 @@ public class SeedData implements CommandLineRunner {
         account01.setAuthorities(null);
         accountService.save(account01);
         Account account02 = new Account();
-        account02.setFname("SHREEDEELIPENT");
+        account02.setFname("Aniket");
         account02.setEmail("shreedeelipent@gmail.com");
         account02.setPassword("Khush"); 
         account02.setRole(Roles.ADMIN.getRole());
         account02.setAuthorities(null);
         accountService.save(account02);  
+
+        Account account03 = new Account();
+        account03.setFname("Atharva");
+        account03.setEmail("atharvasungar@gmail.com");
+        account03.setPassword("Khush"); 
+        account03.setRole(Roles.ADMIN.getRole());
+        account03.setAuthorities(null);
+        accountService.save(account03);
+
+        Account account04 = new Account();
+        account04.setFname("Abhishek");
+        account04.setEmail("abhisheksolabannavar@gmail.com");
+        account04.setPassword("Khush"); 
+        account04.setRole(Roles.ADMIN.getRole());
+        account04.setAuthorities(null);
+        accountService.save(account04);
 
 
         Project project01 = new Project();
@@ -48,7 +64,21 @@ public class SeedData implements CommandLineRunner {
         project02.setAccount(account01);
         projectService.save(project02);
 
+        Project project03 = new Project();
+        Project project04 = new Project();
+ 
 
+        project03.setTitle("BluePhoenix");
+        project03.setRequirements("Hardwareeeeeeeeeeee");
+        project03.setDescription("A revitalizing project aimed at rebuilding and reinventing processes for optimal efficiency.");
+        project03.setAccount(account03);
+        projectService.save(project03);
+
+        project04.setTitle("SwiftMomentum");
+        project04.setRequirements("Hardwareeeeeeeeeeee");
+        project04.setDescription("Focuses on accelerating task completion and delivering results with speed and precision.");
+        project04.setAccount(account04);
+        projectService.save(project04);
     }
    
 }

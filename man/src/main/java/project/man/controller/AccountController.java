@@ -110,7 +110,7 @@ public class AccountController {
             account.setPassword_reset_token_expiry(LocalDateTime.now().plusMinutes(password_token_timeout));
             accountService.save(account);
            String reset_message= "This is the reset password link: "+site_domain+"changepassword?token="+reset_token;
-             emailDetails emaildetails = new emailDetails(account.getEmail(),reset_message,"Reset password Study Easy Demo");
+             emailDetails emaildetails = new emailDetails(account.getEmail(),reset_message,"Reset password by Project Ace");
              if(emailService.sendSimpleEmail(emaildetails) ==false)
              {
                 attributes.addFlashAttribute("error","Error while sending email contact admin");
